@@ -1,5 +1,7 @@
+// pages/home.dart
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mediclic/otherpages/chatbot.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -61,7 +63,7 @@ class _HomeState extends State<Home> {
             TextField(
               decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search),
-                hintText: 'Rechercher une clinique ou un spécialiste ',
+                hintText: 'Rechercher une clinique/un spécialiste',
                 filled: true,
                 fillColor: Colors.white,
                 border: OutlineInputBorder(
@@ -106,17 +108,31 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                Container(
-                  height: 50,
-                  width: largeur * 0.22,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF0095FF),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: Text(
-                    'chatbot',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ChatBot();
+                        },
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 50,
+                    width: largeur * 0.22,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF0095FF),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'chatbot',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
                 ),
                 Container(
@@ -148,7 +164,7 @@ class _HomeState extends State<Home> {
                 itemBuilder: (context, index) {
                   return SizedBox(
                     height: largeur * 0.27,
-                    //  width: largeur * 0.25,
+
                     child: Container(
                       padding: EdgeInsets.only(left: 5, right: 5),
                       height: largeur * 0.27,
@@ -176,7 +192,7 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 2),
             Text(
               'Cliniques à proximité',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
