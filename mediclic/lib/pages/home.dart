@@ -58,47 +58,19 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              height: hauteur * 0.15,
-              width: largeur - 40,
-              decoration: BoxDecoration(
-                color: Color(0xFF0095FF),
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.search),
-                      hintText: 'Rechercher une clinique ou un spécialiste ',
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: UnderlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                      ),
-                    ),
-                  ),
-                  Row(
-                    spacing: 10,
-                    children: [
-                      Icon(Icons.location_on, color: Colors.white, size: 28),
-                      Text(
-                        'SOS Abomey-Calavi',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+            TextField(
+              decoration: InputDecoration(
+                suffixIcon: Icon(Icons.search),
+                hintText: 'Rechercher une clinique ou un spécialiste ',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
               ),
             ),
+
             SizedBox(height: 15),
             Text(
               'Actions rapides',
@@ -169,7 +141,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 10),
             SizedBox(
-              height:largeur * 0.27 ,
+              height: largeur * 0.27,
               child: ListView.builder(
                 itemCount: specialites.length,
                 scrollDirection: Axis.horizontal,
@@ -187,12 +159,15 @@ class _HomeState extends State<Home> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         spacing: 5,
                         children: [
-                          Icon(specialitesIcons[index], ),
+                          Icon(specialitesIcons[index]),
 
                           Text(
                             specialites[index],
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ],
                       ),
@@ -201,7 +176,7 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
-              SizedBox(height: 15),
+            SizedBox(height: 15),
             Text(
               'Cliniques à proximité',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -221,17 +196,21 @@ class HomeBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(
-          width: 200,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            spacing: 10,
-            children: [
-              CircleAvatar(),
-              Text('Hello, Moses', style: TextStyle(fontSize: 15)),
-            ],
-          ),
+        Row(
+          spacing: 10,
+          children: [
+            Icon(Icons.location_on, size: 28),
+            Text(
+              'SOS Abomey-Calavi',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
+
         Icon(Icons.notifications, size: 26),
       ],
     );
