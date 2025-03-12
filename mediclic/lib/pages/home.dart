@@ -14,21 +14,21 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<String> specialites = [
-    "Médecine Générale",
-    "Cardiologie",
-    "Dermatologie",
-    "Neurologie",
-    "Ophtalmologie",
-    "Pédiatrie",
-    "Gynécologie",
-    "Orthopédie",
-    "Psychiatrie",
-    "Dentisterie",
-    "Radiologie",
+    "Médecin Généraliste",
+    "Cardiologue",
+    "Dermatologue",
+    "Neurologue",
+    "Ophtalmologue",
+    "Pédiatrue",
+    "Gynécologue",
+    "Orthopéde",
+    "Psychiatre",
+    "Dentiste",
+    "Radiologue",
 
-    "Endocrinologie",
-    "Urologie",
-    "Chirurgie Générale",
+    "Endocrinologue",
+    "Urologue",
+    "Chirurgien ",
     "Médecine du Sport",
   ];
   List<IconData> specialitesIcons = [
@@ -53,8 +53,9 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     double hauteur = MediaQuery.of(context).size.height;
     double largeur = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Padding(
+    return Scaffold(
+      appBar: AppBar(title: HomeBar()),
+      body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

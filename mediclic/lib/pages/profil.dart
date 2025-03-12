@@ -15,7 +15,11 @@ class _Profil extends State<Profil> {
   @override
   Widget build(BuildContext context) {
     double largeurEcran = MediaQuery.of(context).size.width;
-    return Padding(
+    return Scaffold(
+      appBar: AppBar(
+        title: ProfilBar(),
+      ),
+    body :Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           spacing: 20,
@@ -24,11 +28,12 @@ class _Profil extends State<Profil> {
           children: [
             SizedBox(
               height: 80,
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 spacing: 10,
                 children: [
                   CircleAvatar(
+                    backgroundColor: Colors.black,
                     child: Image.asset('assets/Group 32.png'),
                   ),
                   Text('Moses kdk')
@@ -180,7 +185,7 @@ class _Profil extends State<Profil> {
               ),
             ),
           ],
-        ));
+        )));
   }
 }
 
