@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
   ];
   @override
   Widget build(BuildContext context) {
-    double hauteur = MediaQuery.of(context).size.height;
     double largeur = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(title: HomeBar()),
