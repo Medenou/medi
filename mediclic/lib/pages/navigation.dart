@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:mediclic/otherpages/chatbot.dart';
 import 'package:mediclic/otherpages/clniquedetails.dart';
+import 'package:mediclic/pages/dossier_medical.dart';
 import 'package:mediclic/pages/home.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mediclic/pages/profil.dart';
@@ -16,7 +17,7 @@ class MyAppHome extends StatefulWidget {
 }
 
 class _MyAppHomeState extends State<MyAppHome> {
-  final List<Widget> pages = [Home(), Scaffold(),DetailsClinique(), Profil()];
+  final List<Widget> pages = [Home(), DossierMedical(),DetailsClinique(), Profil()];
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class _MyAppHomeState extends State<MyAppHome> {
             icon: Icon(FontAwesomeIcons.calendarCheck),
             label: 'Consultations',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
+          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Dossier médical'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
         ],
         currentIndex: selectedIndex,

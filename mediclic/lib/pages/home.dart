@@ -82,44 +82,48 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: 50,
-                  width: largeur * 0.22,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2E7D32),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(Icons.medical_services, color: Colors.white),
-                      Text(
-                        'Consult',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ],
+                GestureDetector(
+                  child: Container(
+                    height: 50,
+                    width: largeur * 0.22,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2E7D32),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.medical_services, color: Colors.white),
+                        Text(
+                          'Consult',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  height: 50,
-                  width: largeur * 0.22,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2E7D32),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(Icons.local_hospital, color: Colors.white),
-                      Text(
-                        'Urgence',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ],
+                GestureDetector(
+                  child: Container(
+                    height: 50,
+                    width: largeur * 0.22,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2E7D32),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.local_hospital, color: Colors.white),
+                        Text(
+                          'Urgence',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 GestureDetector(
@@ -154,25 +158,26 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-
-                Container(
-                  height: 50,
-                  width: largeur * 0.22,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2E7D32),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(Icons.calendar_today, color: Colors.white),
-                      Text(
-                        'Rendez-vous',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ],
+                GestureDetector(
+                  child: Container(
+                    height: 50,
+                    width: largeur * 0.22,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2E7D32),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.calendar_today, color: Colors.white),
+                        Text(
+                          'Rendez-vous',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
