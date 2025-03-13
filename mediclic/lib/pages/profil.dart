@@ -19,22 +19,24 @@ class _Profil extends State<Profil> {
       appBar: AppBar(
         title: ProfilBar(),
       ),
-    body :Padding(
+      body :Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           spacing: 20,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 80,
+            Center(
+             
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+              
                 spacing: 10,
                 children: [
                   CircleAvatar(
-                    backgroundColor: Colors.black,
-                    child: Image.asset('assets/Group 32.png'),
+                    radius: 50,
+                    
+                  
+                  //  child: Image.asset('assets/Group 32.png'),
                   ),
                   Text('Moses kdk')
                 ],
@@ -198,14 +200,14 @@ class ProfilBar extends StatelessWidget {
       Text(
         'Moses kdk',
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),
       ),
       Icon(
         Icons.arrow_drop_down,
-        color: Colors.white,
+        color: Colors.black,
       ),
     ]);
   }

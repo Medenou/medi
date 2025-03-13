@@ -32,22 +32,22 @@ class _HomeState extends State<Home> {
     "Médecine du Sport",
   ];
   List<IconData> specialitesIcons = [
-    Icons.local_hospital, // Médecine Générale
-    FontAwesomeIcons.heartPulse, // Cardiologie
-    Icons.spa, // Dermatologie
-    FontAwesomeIcons.brain, // Neurologie
-    Icons.visibility, // Ophtalmologie
-    Icons.child_care, // Pédiatrie
-    Icons.pregnant_woman, // Gynécologie
-    FontAwesomeIcons.bone, // Orthopédie
-    FontAwesomeIcons.headSideVirus, // Psychiatrie
-    FontAwesomeIcons.tooth, // Dentisterie
-    FontAwesomeIcons.xRay, // Radiologie
+    Icons.local_hospital,
+    FontAwesomeIcons.heartPulse,
+    Icons.spa,
+    FontAwesomeIcons.brain,
+    Icons.visibility,
+    Icons.child_care,
+    Icons.pregnant_woman,
+    FontAwesomeIcons.bone,
+    FontAwesomeIcons.headSideVirus,
+    FontAwesomeIcons.tooth,
+    FontAwesomeIcons.xRay,
 
-    FontAwesomeIcons.dna, // Endocrinologie
-    FontAwesomeIcons.prescriptionBottle, // Urologie
-    Icons.content_cut, // Chirurgie Générale
-    FontAwesomeIcons.personRunning, // Médecine du Sport
+    FontAwesomeIcons.dna,
+    FontAwesomeIcons.prescriptionBottle,
+    Icons.content_cut,
+    FontAwesomeIcons.personRunning,
   ];
   @override
   Widget build(BuildContext context) {
@@ -87,26 +87,40 @@ class _HomeState extends State<Home> {
                   height: 50,
                   width: largeur * 0.22,
                   decoration: BoxDecoration(
-                    color: Color(0xFF0095FF),
+                    color: Color(0xFF2E7D32),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
-                  child: Text(
-                    'Consulter un spécialiste',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.medical_services, color: Colors.white),
+                      Text(
+                        'Consult',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
                   height: 50,
                   width: largeur * 0.22,
                   decoration: BoxDecoration(
-                    color: Color(0xFF0095FF),
+                    color: Color(0xFF2E7D32),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
-                  child: Text(
-                    'Appeler une ambulance',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.local_hospital, color: Colors.white),
+                      Text(
+                        'Urgence',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ],
                   ),
                 ),
                 GestureDetector(
@@ -124,29 +138,42 @@ class _HomeState extends State<Home> {
                     height: 50,
                     width: largeur * 0.22,
                     decoration: BoxDecoration(
-                      color: Color(0xFF0095FF),
+                      color: Color(0xFF2E7D32),
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
-                    child: Center(
-                      child: Text(
-                        'chatbot',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.smart_toy, color: Colors.white),
+                        Text(
+                          'Chatbot',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ],
                     ),
                   ),
                 ),
+
                 Container(
                   height: 50,
                   width: largeur * 0.22,
                   decoration: BoxDecoration(
-                    color: Color(0xFF0095FF),
+                    color: Color(0xFF2E7D32),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
-                  child: Text(
-                    'Prendre un rendez-vous',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.calendar_today, color: Colors.white),
+                      Text(
+                        'Rendez-vous',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -158,18 +185,22 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 10),
             SizedBox(
-              height: largeur * 0.27,
+              height: largeur * 0.23,
               child: ListView.builder(
                 itemCount: specialites.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return SizedBox(
-                    height: largeur * 0.27,
-
+                  return Container(
+                    padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                    height: largeur * 0.2,
+                    width: largeur * 0.28,
                     child: Container(
                       padding: EdgeInsets.only(left: 5, right: 5),
-                      height: largeur * 0.27,
-                      width: largeur * 0.25,
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        border: Border.all(),
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
@@ -193,7 +224,7 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
-            SizedBox(height: 2),
+            SizedBox(height: 10),
             Text(
               'Cliniques à proximité',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -205,6 +236,7 @@ class _HomeState extends State<Home> {
   }
 }
 
+//HomeBar
 class HomeBar extends StatelessWidget {
   const HomeBar({super.key});
 
