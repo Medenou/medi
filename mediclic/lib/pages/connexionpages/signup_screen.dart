@@ -55,8 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             'createdAt': Timestamp.now(),
           });
 
-      Navigator.push(
-        context,
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) {
             return LoginScreen();
@@ -89,18 +88,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-   
+
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.all(15),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               
-                  Center(child: Image.asset('assets/logo.png', height: 150)),
-                SizedBox(height: 10),
+                Center(
+                  child: Image.asset(
+                    'assets/logo.png',
+                    height: MediaQuery.of(context).size.height * 0.12,
+                  ),
+                ),
+
                 Text(
                   'Créer un compte',
                   style: TextStyle(
@@ -109,7 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     color: Color(0xFF2E7D32),
                   ),
                 ),
-                SizedBox(height: 8),
+                // SizedBox(height: 8),
                 Text(
                   'Veuillez compléter vos informations',
                   style: TextStyle(fontSize: 16, color: Colors.grey[600]),

@@ -65,7 +65,7 @@ class _DetailsClinique extends State<DetailsClinique> {
                             'Divine Miséricorde',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -89,7 +89,7 @@ class _DetailsClinique extends State<DetailsClinique> {
                             'Adresse téléphonique',
 
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -104,12 +104,12 @@ class _DetailsClinique extends State<DetailsClinique> {
                           Row(
                             spacing: 5,
                             children: [
-                              Icon(Icons.location_on, size: 28),
+                              Icon(Icons.location_on, size: 26),
                               Text(
                                 'SOS Abomey-Calavi',
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 16,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
