@@ -1,0 +1,38 @@
+[debug] [2025-03-14T11:17:42.359Z] ----------------------------------------------------------------------
+[debug] [2025-03-14T11:17:42.362Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Moise\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js projects:list --json
+[debug] [2025-03-14T11:17:42.363Z] CLI Version:   13.33.0
+[debug] [2025-03-14T11:17:42.363Z] Platform:      win32
+[debug] [2025-03-14T11:17:42.363Z] Node Version:  v22.14.0
+[debug] [2025-03-14T11:17:42.363Z] Time:          Fri Mar 14 2025 12:17:42 GMT+0100 (heure normale d’Afrique de l’Ouest)
+[debug] [2025-03-14T11:17:42.363Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-14T11:17:42.369Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-14T11:17:42.369Z] > authorizing via signed-in user (koudankomoise@gmail.com)
+[debug] [2025-03-14T11:17:42.373Z] Checked if tokens are valid: true, expires at: 1741954440024
+[debug] [2025-03-14T11:17:42.374Z] Checked if tokens are valid: true, expires at: 1741954440024
+[debug] [2025-03-14T11:17:42.375Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-03-14T11:17:58.552Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-03-14T11:17:58.552Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] ┌──────────────────────┬───────────────────┬────────────────┬──────────────────────┐
+│ Project Display Name │ Project ID        │ Project Number │ Resource Location ID │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ affirmative          │ affirmative-c712b │ 443525133674   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ DCLIC-Heath          │ dclic-heath       │ 872003906528   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ heathvibes           │ heathvibes-fb7b1  │ 770301049337   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ market               │ market-5e9b4      │ 1025655785347  │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ mediclic             │ mediclic-fe054    │ 329799393413   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ recipes              │ recipes-12f81     │ 490272608731   │ [Not specified]      │
+└──────────────────────┴───────────────────┴────────────────┴──────────────────────┘
+[info] 
+[info] 6 project(s) total.
+[debug] [2025-03-14T11:18:08.597Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\Moise\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:269:49)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -29,6 +29,13 @@
             {
               "client_id": "872003906528-fer52d32vpiruf952fehs5ugen6cjq1e.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "872003906528-3h1q0ogo03jdi1omgfnka71h6mqe7g85.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mediclic"
+              }
             }
           ]
         }

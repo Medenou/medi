@@ -74,10 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 40),
+                  SizedBox(height: 10),
                   // Logo
-                  // Center(child: Image.asset('assets/image1.png', height: 300)),
-                  SizedBox(height: 30),
+                   Center(child: Image.asset('assets/logo.png', height: 300)),
+                  SizedBox(height: 20),
 
                   // Titre
                   Text(
@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
+                      color: Colors.green,
                     ),
                   ),
                   SizedBox(height: 8),
@@ -156,16 +156,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {},
                       child: Text(
                         'Mot de passe oublié?',
-                        style: TextStyle(color: Colors.blueAccent),
+                        style: TextStyle(color: Color(0xFF2E7D32)),
                       ),
                     ),
                   ),
-                  SizedBox(height: 24),
+                  SizedBox(height: 20),
 
                   // Bouton de connexion
                   SizedBox(
                     width: double.infinity,
-                    height: 55,
+                    height: 45,
                     child: ElevatedButton(
                       onPressed:
                           _isLoading
@@ -197,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
 
                   // Lien vers l'inscription
                   Row(
@@ -220,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           "S'inscrire",
                           style: TextStyle(
-                            color: Colors.blueAccent,
+                            color: Color(0xFF2E7D32),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

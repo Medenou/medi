@@ -21,7 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmationController =
       TextEditingController();
-final  String _profileType = 'Client';
+  final String _profileType = 'Client';
 
   bool _isLoading = false;
   String? _errorMessage;
@@ -89,28 +89,24 @@ final  String _profileType = 'Client';
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.blueAccent),
-      ),
+   
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
-              //  Center(child: Image.asset('assets/market.jpg', height: 150)),
-                SizedBox(height: 20),
+               
+                  Center(child: Image.asset('assets/logo.png', height: 150)),
+                SizedBox(height: 10),
                 Text(
                   'Créer un compte',
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
+                    color: Color(0xFF2E7D32),
                   ),
                 ),
                 SizedBox(height: 8),
@@ -154,25 +150,8 @@ final  String _profileType = 'Client';
                   Icons.lock_outline,
                   null,
                 ),
-               // SizedBox(height: 16),
-               /* DropdownButtonFormField<String>(
-                  value: _profileType,
-                  decoration: _inputDecoration(
-                    'Type de profil',
-                    Icons.account_circle,
-                  ),
-                  items:
-                      ['Client', 'Marchand']
-                          .map(
-                            (type) => DropdownMenuItem(
-                              value: type,
-                              child: Text(type),
-                            ),
-                          )
-                          .toList(),
-                  onChanged: (value) => setState(() => _profileType = value!),
-                ),*/
-                SizedBox(height: 24),
+
+                SizedBox(height: 20),
                 if (_errorMessage != null)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -184,14 +163,14 @@ final  String _profileType = 'Client';
                       ),
                     ),
                   ),
-                SizedBox(height: 24),
+                SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
-                  height: 55,
+                  height: 40,
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _signUp,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:Color(0xFF2E7D32) ,
+                      backgroundColor: Color(0xFF2E7D32),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -210,7 +189,7 @@ final  String _profileType = 'Client';
                             ),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -223,7 +202,7 @@ final  String _profileType = 'Client';
                       child: Text(
                         "Se connecter",
                         style: TextStyle(
-                          color: Colors.blueAccent,
+                          color: Colors.lightGreen,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
