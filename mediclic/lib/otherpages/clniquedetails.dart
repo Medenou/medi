@@ -1,5 +1,6 @@
 // otherpages/clniquedetails.dart
 import 'package:flutter/material.dart';
+import 'package:mediclic/otherpages/rendez_vous2.dart';
 
 class DetailsClinique extends StatefulWidget {
   // String nomHopital;
@@ -147,13 +148,13 @@ class _DetailsClinique extends State<DetailsClinique> {
                           spacing: 5,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.home, size: 30, color: Colors.white,),
+                            Icon(Icons.home, size: 30, color: Colors.white),
                             Text(
                               'Visites',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                               color:   Colors.white
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -178,20 +179,24 @@ class _DetailsClinique extends State<DetailsClinique> {
                           style: TextStyle(
                             fontSize: 16,
                             fontStyle: FontStyle.normal,
-                            color: Colors.white
+                            color: Colors.white,
                           ),
                         ),
                         Row(
                           spacing: 5,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.badge_sharp, size: 30, color: Colors.white,),
+                            Icon(
+                              Icons.badge_sharp,
+                              size: 30,
+                              color: Colors.white,
+                            ),
                             Text(
                               'Expériences',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -297,30 +302,43 @@ class _DetailsClinique extends State<DetailsClinique> {
                   ],
                 ),
               ),
-              Container(
-                height: 65,
-                width: (largeurEcran - 70) / 3 + 5,
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.green,
-                ),
-                child: Row(
-                  spacing: 2,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.access_alarm, color: Colors.white),
-                    Text(
-                      'Un rendez-vous',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    elevation: 20,
+                    context: context,
+                    builder: (context) {
+                      return RendezVousClinique(
+                        nomClinique: 'Divine Miséricorde',
+                      );
+                    },
+                  );
+                },
+                child: Container(
+                  height: 65,
+                  width: (largeurEcran - 70) / 3 + 5,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Colors.green,
+                  ),
+                  child: Row(
+                    spacing: 2,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.access_alarm, color: Colors.white),
+                      Text(
+                        'Un rendez-vous',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

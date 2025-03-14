@@ -19,10 +19,10 @@ class _DossierMedical extends State<DossierMedical> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Mon dossier Médical',
+              'Mon dossier médical',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            IconButton(onPressed: null, icon: Icon(Icons.share)),
+            IconButton(onPressed: null, icon: Icon(Icons.share),color: Colors.black,),
           ],
         ),
       ),
@@ -30,6 +30,7 @@ class _DossierMedical extends State<DossierMedical> {
         child: Padding(
           padding: EdgeInsets.all(15),
           child: Column(
+            spacing: 15,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -39,7 +40,7 @@ class _DossierMedical extends State<DossierMedical> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  border: Border(),
+                  border: Border.all(),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
                 child: Column(
@@ -54,7 +55,7 @@ class _DossierMedical extends State<DossierMedical> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  border: Border(),
+                  border: Border.all(),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
                 child: Column(
@@ -69,7 +70,7 @@ class _DossierMedical extends State<DossierMedical> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  border: Border(),
+                  border: Border.all(),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
                 child: Column(
@@ -84,12 +85,13 @@ class _DossierMedical extends State<DossierMedical> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  border: Border(),
+                  border: Border.all(),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
                 child: Column(
                   children: [
-                    ListTile(title: Text('Nom'), leading: Text('Moses kdk')),
+                    ListTile(title: Text('Moses Kdk'), leading: Text('Nom')),
+                    
                   ],
                 ),
               ),

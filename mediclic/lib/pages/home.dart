@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mediclic/otherpages/chatbot.dart';
+import 'package:mediclic/otherpages/clinique.dart';
+import 'package:mediclic/otherpages/rendez_vous.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,6 +15,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int selectedIndex = 0;
   List<String> specialites = [
     "Médecin Généraliste",
     "Cardiologue",
@@ -105,6 +108,57 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          backgroundColor: Colors.redAccent,
+                          content: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.call, color: Colors.white),
+                              SizedBox(width: 2),
+                              Text(
+                                'Appeler une ambulance ?',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text(
+                                'Non',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            TextButton(
+                              child: Text(
+                                'Oui',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                   child: Container(
                     height: 50,
                     width: largeur * 0.22,
@@ -159,6 +213,15 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                      elevation: 20,
+                      context: context,
+                      builder: (context) {
+                        return RendezVous();
+                      },
+                    );
+                  },
                   child: Container(
                     height: 50,
                     width: largeur * 0.22,
@@ -194,34 +257,56 @@ class _HomeState extends State<Home> {
                 itemCount: specialites.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
-                    height: largeur * 0.2,
-                    width: largeur * 0.28,
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+
                     child: Container(
-                      padding: EdgeInsets.only(left: 5, right: 5),
+                      padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                      height: largeur * 0.2,
+                      width: largeur * 0.28,
+                      child: Container(
+                        padding: EdgeInsets.only(left: 5, right: 5),
 
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        border: Border.all(),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        spacing: 5,
-                        children: [
-                          Icon(specialitesIcons[index]),
-
-                          Text(
-                            specialites[index],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
+                        decoration: BoxDecoration(
+                          color:
+                              selectedIndex == index
+                                  ? Color(0xFF2E7D32)
+                                  : Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          border: Border.all(),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          spacing: 5,
+                          children: [
+                            Icon(
+                              specialitesIcons[index],
+                              color:
+                                  selectedIndex == index
+                                      ? Colors.white
+                                      : Colors.black,
                             ),
-                          ),
-                        ],
+
+                            Text(
+                              specialites[index],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color:
+                                    selectedIndex == index
+                                        ? Colors.white
+                                        : Colors.black,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -231,6 +316,12 @@ class _HomeState extends State<Home> {
             SizedBox(height: 10),
             Text(
               'Cliniques à proximité',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Clinique(),
+             SizedBox(height: 10),
+            Text(
+              'Spécialistes',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ],
