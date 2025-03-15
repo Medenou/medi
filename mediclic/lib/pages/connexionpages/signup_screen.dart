@@ -21,7 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmationController =
       TextEditingController();
-  final String _profileType = 'Client';
+  final String _profileType = 'patient';
 
   bool _isLoading = false;
   String? _errorMessage;
@@ -107,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Text(
                   'Créer un compte',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2E7D32),
                   ),
@@ -117,36 +117,74 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   'Veuillez compléter vos informations',
                   style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: 20),
                 _buildTextField(_nameController, 'Nom', Icons.person),
-                SizedBox(height: 16),
+                SizedBox(height: 15),
                 _buildTextField(
                   _surnameController,
                   'Prénom',
                   Icons.person_outline,
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 15),
                 _buildTextField(
                   _phoneController,
                   'Téléphone',
                   Icons.phone,
                   TextInputType.phone,
                 ),
-                SizedBox(height: 16),
-                _buildTextField(
-                  _emailController,
-                  'Email',
-                  Icons.email_outlined,
-                  TextInputType.emailAddress,
+                SizedBox(height: 15),
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    hintText: 'exemple@email.com',
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: Colors.blueAccent,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Veuillez entrer votre email.';
+                    } else if (!RegExp(
+                      r'^[^@]+@[^@]+\.[^@]+',
+                    ).hasMatch(value)) {
+                      return 'Veuillez entrer un email valide.';
+                    }
+                    return null;
+                  },
                 ),
-                SizedBox(height: 16),
-                _buildTextField(
-                  _passwordController,
-                  'Mot de passe',
-                  Icons.lock_outline,
-                  null,
+
+                SizedBox(height: 15),
+                TextFormField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Mot de passe',
+                    hintText: '••••••••',
+                    prefixIcon: Icon(
+                      Icons.lock_outline,
+                      color: Colors.blueAccent,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Veuillez entrer votre mot de passe.';
+                    } else if (value.length < 6) {
+                      return 'Le mot de passe doit contenir au moins 6 caractères.';
+                    }
+                    return null;
+                  },
                 ),
-                SizedBox(height: 16),
+
+                SizedBox(height: 15),
                 _buildTextField(
                   _passwordConfirmationController,
                   'Confirmer le mot de passe',
@@ -233,9 +271,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       keyboardType: keyboardType,
       obscureText: obscureText,
       decoration: _inputDecoration(label, icon),
-      validator:
-          (value) =>
-              value == null || value.isEmpty ? 'Veuillez entrer $label' : null,
+      validator: (value) {
+        value = value?.trim();
+        if (value == null || value.isEmpty || value.length < 3) {
+          return 'entrez un $label valide';
+        }
+        return null;
+      },
     );
   }
 

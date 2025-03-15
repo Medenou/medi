@@ -40,14 +40,15 @@ class _DetailsClinique extends State<DetailsClinique> {
             children: [
               SizedBox(
                 height: largeurEcran * 0.45,
-                width: largeurEcran - 40,
+               // width: largeurEcran - 40,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 10,
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                 crossAxisAlignment: CrossAxisAlignment.center, 
                   children: [
                     Container(
                       height: largeurEcran * 0.42,
-                      width: largeurEcran * 0.4 - 10,
+                      width: largeurEcran * 0.4 -20,
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
