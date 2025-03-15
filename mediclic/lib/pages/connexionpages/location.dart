@@ -1,5 +1,5 @@
 // pages/connexionpages/location.dart
-import 'package:location/location.dart';
+/*import 'package:location/location.dart';
 import 'package:geocoding/geocoding.dart';
 
 class LocationService {
@@ -47,4 +47,4 @@ class LocationService {
       return "Erreur : $e";
     }
   }
-}
+}*/

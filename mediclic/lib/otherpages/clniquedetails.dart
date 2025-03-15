@@ -1,19 +1,26 @@
 // otherpages/clniquedetails.dart
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mediclic/otherpages/rendez_vous2.dart';
 
-class DetailsClinique extends StatefulWidget {
-  // String nomHopital;
+class DetailsClinique extends StatelessWidget {
+ final String cliniqueName;
+ final String cliniquePhone;
+ final String cliniquephoto;
 
-  const DetailsClinique({super.key});
+  DetailsClinique({
+    super.key,
+    required this.cliniqueName,
+    required this.cliniquePhone,
+    required this.cliniquephoto,
+  });
 
-  @override
-  State<StatefulWidget> createState() {
-    return _DetailsClinique();
-  }
-}
+  late final Stream<QuerySnapshot> _cliniqueinfoStream =
+      FirebaseFirestore.instance
+          .collection('medecins')
+          .where("clinique", isEqualTo: cliniqueName)
+          .snapshots();
 
-class _DetailsClinique extends State<DetailsClinique> {
   @override
   Widget build(BuildContext context) {
     double hauteurEcran = MediaQuery.of(context).size.height;
@@ -40,17 +47,20 @@ class _DetailsClinique extends State<DetailsClinique> {
             children: [
               SizedBox(
                 height: largeurEcran * 0.45,
-               // width: largeurEcran - 40,
+
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                 crossAxisAlignment: CrossAxisAlignment.center, 
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       height: largeurEcran * 0.42,
-                      width: largeurEcran * 0.4 -20,
+                      width: largeurEcran * 0.4 - 20,
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        image: DecorationImage(
+                          image: AssetImage(cliniquephoto),
+                          fit: BoxFit.cover,
+                        ),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                     ),
@@ -63,7 +73,7 @@ class _DetailsClinique extends State<DetailsClinique> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Divine Miséricorde',
+                            'Clinique $cliniqueName',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               fontSize: 16,
@@ -95,7 +105,7 @@ class _DetailsClinique extends State<DetailsClinique> {
                             ),
                           ),
                           Text(
-                            '00229 015 124 24 52 ',
+                            '$cliniquePhone ',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.normal,
@@ -213,25 +223,43 @@ class _DetailsClinique extends State<DetailsClinique> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              SizedBox(
-                height: hauteurEcran * 0.4,
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding: EdgeInsets.all(10),
-                      height: hauteurEcran * 0.05,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Nom du docteur'),
-                          Text('Specialités'),
-                          Text('Disponibilité'),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+              StreamBuilder(
+                stream: _cliniqueinfoStream,
+                builder: (
+                  BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot,
+                ) {
+                  if (snapshot.hasError) {
+                    return const Text('Something went wrong');
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Text("Loading");
+                  }
+                  return SizedBox(
+                    height: hauteurEcran * 0.4,
+                    child: ListView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot document = snapshot.data!.docs[index];
+                        Map<String, dynamic> data =
+                            document.data()! as Map<String, dynamic>;
+                        return Container(
+                          padding: EdgeInsets.all(10),
+                          height: hauteurEcran * 0.05,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('${data['nom']}'),
+                              Text('${data['specialite']}'),
+                              Text('${data['phone']}'),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
             ],
           ),
