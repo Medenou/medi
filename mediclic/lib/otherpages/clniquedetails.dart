@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:mediclic/otherpages/rendez_vous2.dart';
 
 class DetailsClinique extends StatelessWidget {
- final String cliniqueName;
+ final Stream <String> cliniqueName;
  final String cliniquePhone;
- final String cliniquephoto;
+ final  String cliniquephoto;
 
   DetailsClinique({
     super.key,
@@ -73,7 +73,7 @@ class DetailsClinique extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Clinique $cliniqueName',
+                            '$cliniqueName',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               fontSize: 16,

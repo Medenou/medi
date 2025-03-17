@@ -14,7 +14,7 @@ class _RendezPageState extends State<RendezPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('mes rendez-vous')),
+      appBar: AppBar(title: Text('Mes rendez-vous')),
       body: SingleChildScrollView(
         child: SafeArea(
           child: SizedBox(
@@ -22,7 +22,6 @@ class _RendezPageState extends State<RendezPage> {
             child: ListView.builder(
               itemCount: 5,
               itemBuilder: (context, index) {
-                
                 return Container(
                   padding: EdgeInsets.all(10),
                   child: Container(
@@ -30,25 +29,35 @@ class _RendezPageState extends State<RendezPage> {
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                     ),
-                    child: ListTile(
-                      title: Text("25 Mars 2025"),
-                      titleAlignment: ListTileTitleAlignment.titleHeight,
-                      titleTextStyle: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                      ),
+                    child: Column(
+                      spacing: 10,
+                      children: [
+                        ListTile(
+                          title: Text("25 Mars 2025"),
+                          titleAlignment: ListTileTitleAlignment.titleHeight,
+                          titleTextStyle: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
 
-                      subtitle: Text('14h30'),
-                      subtitleTextStyle: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                      ),
-                      trailing: Text(
-                        'Cardiologie/Clinique Saint Jean',
-                        overflow: TextOverflow.visible,
-                      ),
+                          subtitle: Text('14h30'),
+                          subtitleTextStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Colors.black,
+                          ),
+                          trailing: Column(
+                          
+                            children: [
+                              Text('Clinique Saint Jean'),
+                              Text('Cardiologie')
+                            ],
+                          ),
 
-                      isThreeLine: true,
+                          isThreeLine: true,
+                        ),
+                      ],
                     ),
                   ),
                 );

@@ -22,7 +22,7 @@ class _CliniqueState extends State {
   final Stream<QuerySnapshot> _cliniqueStream =
       FirebaseFirestore.instance
           .collection('users')
-          .where("profile", isEqualTo: "clinique")
+          .where("profile", isEqualTo: "Clinique")
           .snapshots();
 
   @override
@@ -51,13 +51,13 @@ class _CliniqueState extends State {
                   document.data()! as Map<String, dynamic>;
               selectedIndex = index;
               return GestureDetector(
-                onTap: () {
+               onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) {
                         return DetailsClinique(
-                          cliniqueName: data['nom'],
+                          cliniqueName: data['name'],
                           cliniquePhone: data['phone'],
                           cliniquephoto: _photo[index % 3],
                         );
@@ -89,7 +89,7 @@ class _CliniqueState extends State {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        'Clinique ${data['nom']}',
+                        'Clinique ${data['name']}',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

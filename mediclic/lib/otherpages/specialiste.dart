@@ -73,7 +73,7 @@ class _SpecialisteState extends State {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        '${data['specialiste']}',
+                        '${data['specialite']}',
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.normal,
