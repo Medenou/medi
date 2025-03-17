@@ -23,7 +23,7 @@ class _RedirectionPageState extends State<RedirectionPage> {
         
         }
         else if (snapshot.hasData){
-          return  DashboardScreen();
+          return MedicliniqueApp();
         }
         else{
           return  LoginScreen();

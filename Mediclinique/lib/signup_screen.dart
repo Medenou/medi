@@ -15,7 +15,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmationController = TextEditingController();
-  String _profileType = 'Client';
+  String _profileType = 'Patient';
 
   bool _isLoading = false;
   String? _errorMessage;
@@ -31,11 +31,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
 
     try {
+      // Créer un utilisateur avec Firebase Auth
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
 
+      // Enregistrer les informations supplémentaires dans Firestore
       await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
         'name': _nameController.text.trim(),
         'surname': _surnameController.text.trim(),
@@ -45,6 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         'createdAt': Timestamp.now(),
       });
 
+      // Rediriger vers la page de connexion après l'inscription
       Navigator.pushReplacementNamed(context, '/login');
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -87,7 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 SizedBox(height: 20),
                 Center(
-                  child: Image.asset('assets/market.jpg', height: 150),
+                  child: Image.asset('assets/image.png', height: 150),
                 ),
                 SizedBox(height: 20),
                 Text(
@@ -108,14 +111,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: 16),
                 _buildTextField(_emailController, 'Email', Icons.email_outlined, TextInputType.emailAddress),
                 SizedBox(height: 16),
-                _buildTextField(_passwordController, 'Mot de passe', Icons.lock_outline, null),
+                _buildTextField(_passwordController, 'Mot de passe', Icons.lock_outline, null, true),
                 SizedBox(height: 16),
-                _buildTextField(_passwordConfirmationController, 'Confirmer le mot de passe', Icons.lock_outline, null),
+                _buildTextField(_passwordConfirmationController, 'Confirmer le mot de passe', Icons.lock_outline, null, true),
                 SizedBox(height: 16),
                 DropdownButtonFormField<String>(
                   value: _profileType,
                   decoration: _inputDecoration('Type de profil', Icons.account_circle),
-                  items: ['Client', 'Marchand'].map((type) => DropdownMenuItem(value: type, child: Text(type))).toList(),
+                  items: ['Patient', 'Clinique'].map((type) => DropdownMenuItem(value: type, child: Text(type))).toList(),
                   onChanged: (value) => setState(() => _profileType = value!),
                 ),
                 SizedBox(height: 24),

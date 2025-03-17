@@ -41,48 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDBRcur6QhmZibFR1SD4WxU7Ssls1Uulaw',
-    appId: '1:329799393413:web:9c54eed9e08556567149ec',
-    messagingSenderId: '329799393413',
-    projectId: 'mediclic-fe054',
-    authDomain: 'mediclic-fe054.firebaseapp.com',
-    storageBucket: 'mediclic-fe054.firebasestorage.app',
-    measurementId: 'G-JVKHKG0MVT',
+    apiKey: 'AIzaSyCb_vDu70tC0t39p05TIrt6BG0yt7-Y3ss',
+    appId: '1:872003906528:web:2412317e7fd3bade4d9985',
+    messagingSenderId: '872003906528',
+    projectId: 'dclic-heath',
+    authDomain: 'dclic-heath.firebaseapp.com',
+    storageBucket: 'dclic-heath.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBtS_VYSuUTQggv58mQqsqcAP3NF_5r1xw',
-    appId: '1:329799393413:android:e457f1144da7d7e87149ec',
-    messagingSenderId: '329799393413',
-    projectId: 'mediclic-fe054',
-    storageBucket: 'mediclic-fe054.firebasestorage.app',
+    apiKey: 'AIzaSyBLt0bFqpjUTDrjM-EPUhRXDCLAJVWUm00',
+    appId: '1:872003906528:android:2c0399b43df5a50f4d9985',
+    messagingSenderId: '872003906528',
+    projectId: 'dclic-heath',
+    storageBucket: 'dclic-heath.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAmek0MZlhR-a2pzfo27i4KodOhXXo6umQ',
-    appId: '1:329799393413:ios:85327c0e88ca3f0d7149ec',
-    messagingSenderId: '329799393413',
-    projectId: 'mediclic-fe054',
-    storageBucket: 'mediclic-fe054.firebasestorage.app',
+    apiKey: 'AIzaSyCn5BwWatoVh2eJ0-TB1f2pgs7cIZkFFKg',
+    appId: '1:872003906528:ios:7373dd1b3692f1a64d9985',
+    messagingSenderId: '872003906528',
+    projectId: 'dclic-heath',
+    storageBucket: 'dclic-heath.firebasestorage.app',
+    iosClientId: '872003906528-3h1q0ogo03jdi1omgfnka71h6mqe7g85.apps.googleusercontent.com',
     iosBundleId: 'com.example.mediclic',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAmek0MZlhR-a2pzfo27i4KodOhXXo6umQ',
-    appId: '1:329799393413:ios:85327c0e88ca3f0d7149ec',
-    messagingSenderId: '329799393413',
-    projectId: 'mediclic-fe054',
-    storageBucket: 'mediclic-fe054.firebasestorage.app',
+    apiKey: 'AIzaSyCn5BwWatoVh2eJ0-TB1f2pgs7cIZkFFKg',
+    appId: '1:872003906528:ios:7373dd1b3692f1a64d9985',
+    messagingSenderId: '872003906528',
+    projectId: 'dclic-heath',
+    storageBucket: 'dclic-heath.firebasestorage.app',
+    iosClientId: '872003906528-3h1q0ogo03jdi1omgfnka71h6mqe7g85.apps.googleusercontent.com',
     iosBundleId: 'com.example.mediclic',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDBRcur6QhmZibFR1SD4WxU7Ssls1Uulaw',
-    appId: '1:329799393413:web:4070743aa8fe50de7149ec',
-    messagingSenderId: '329799393413',
-    projectId: 'mediclic-fe054',
-    authDomain: 'mediclic-fe054.firebaseapp.com',
-    storageBucket: 'mediclic-fe054.firebasestorage.app',
-    measurementId: 'G-EPGBELERR9',
+    apiKey: 'AIzaSyCb_vDu70tC0t39p05TIrt6BG0yt7-Y3ss',
+    appId: '1:872003906528:web:37c0019d428144da4d9985',
+    messagingSenderId: '872003906528',
+    projectId: 'dclic-heath',
+    authDomain: 'dclic-heath.firebaseapp.com',
+    storageBucket: 'dclic-heath.firebasestorage.app',
   );
+
 }
