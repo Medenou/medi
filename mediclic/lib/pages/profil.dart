@@ -1,5 +1,7 @@
 // pages/profil.dart
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Profil extends StatefulWidget {
@@ -12,14 +14,42 @@ class Profil extends StatefulWidget {
 }
 
 class _Profil extends State<Profil> {
+  late final String nomUser;
+  late final String prenomUser;
+  void getUserInfo() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .get();
+
+        if (userDoc.exists) {
+          nomUser = userDoc['name'];
+          prenomUser = userDoc['prenom'];
+        } else {
+          nomUser = 'Moses';
+          prenomUser = 'Kdk';
+        }
+      } else {
+        nomUser = 'Moses';
+        prenomUser = 'Kdk';
+      }
+    } catch (e) {
+      "Erreur lors de la récupération des informations : $e";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    getUserInfo();
     double largeurEcran = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: ProfilBar(),
-      ),
-      body :Padding(
+      appBar: AppBar(title: ProfilBar()),
+      body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           spacing: 20,
@@ -27,22 +57,19 @@ class _Profil extends State<Profil> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-             
               child: Column(
-              
                 spacing: 10,
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    
-                  
-                  //  child: Image.asset('assets/Group 32.png'),
+
+                    child: Image.asset('assets/Group 32.png'),
                   ),
-                  Text('Moses kdk')
+                  Text('$nomUser $prenomUser'),
                 ],
               ),
             ),
-           
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -51,52 +78,43 @@ class _Profil extends State<Profil> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.person,
-                        size: 26,
-                      ),
+                      Icon(Icons.person, size: 26),
                       Text(
                         'Mes informations personnelles',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.arrow_right_outlined,
-                  size: 26,
-                ),
+                Icon(Icons.arrow_right_outlined, size: 26),
               ],
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              SizedBox(
-                width: largeurEcran * 0.7,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 5,
-                  children: [
-                    Icon(
-                      Icons.share,
-                      size: 26,
-                    ),
-                    Text(
-                      'Partager mon dossier médicale',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: largeurEcran * 0.7,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    spacing: 5,
+                    children: [
+                      Icon(Icons.share, size: 26),
+                      Text(
+                        'Partager mon dossier médicale',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Icon(
-                Icons.arrow_right_outlined,
-                size: 26,
-              ),
-            ]),
+                Icon(Icons.arrow_right_outlined, size: 26),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -106,24 +124,18 @@ class _Profil extends State<Profil> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     spacing: 5,
                     children: [
-                      Icon(
-                        Icons.settings,
-                        size: 26,
-                      ),
+                      Icon(Icons.settings, size: 26),
                       Text(
                         'Paramètres',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.arrow_right_outlined,
-                  size: 26,
-                ),
+                Icon(Icons.arrow_right_outlined, size: 26),
               ],
             ),
             Row(
@@ -135,29 +147,23 @@ class _Profil extends State<Profil> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     spacing: 5,
                     children: [
-                      Icon(
-                        Icons.info,
-                        size: 26,
-                      ),
+                      Icon(Icons.info, size: 26),
                       Text(
                         'A propos de nous',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.arrow_right_outlined,
-                  size: 26,
-                ),
+                Icon(Icons.arrow_right_outlined, size: 26),
               ],
             ),
             GestureDetector(
               onTap: () {
-              
+                FirebaseAuth.instance.signOut();
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -179,7 +185,7 @@ class _Profil extends State<Profil> {
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -187,7 +193,9 @@ class _Profil extends State<Profil> {
               ),
             ),
           ],
-        )));
+        ),
+      ),
+    );
   }
 }
 
@@ -196,19 +204,19 @@ class ProfilBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-      Text(
-        'Moses kdk',
-        style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          'Mon profil',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
         ),
-      ),
-      Icon(
-        Icons.arrow_drop_down,
-        color: Colors.black,
-      ),
-    ]);
+        Icon(Icons.arrow_drop_down, color: Colors.black),
+      ],
+    );
   }
 }

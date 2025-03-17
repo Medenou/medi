@@ -5,7 +5,17 @@ import 'package:mediclic/otherpages/chatbot.dart';
 import 'package:mediclic/otherpages/clinique.dart';
 import 'package:mediclic/otherpages/rendez_vous.dart';
 import 'package:mediclic/otherpages/specialiste.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+
+  void appeler(String numero) async {
+    final Uri uri = Uri.parse('tel:$numero');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw "Impossible de lancer cet appel";
+    }
+  }
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -88,6 +98,8 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+
+
   int selectedIndex = 0;
   List<String> specialites = [
     "Médecin Généraliste",
@@ -209,6 +221,7 @@ class _BodyState extends State<Body> {
                               ),
                             ),
                             onPressed: () {
+                              appeler('*22952917162');
                               Navigator.of(context).pop();
                             },
                           ),
@@ -383,7 +396,7 @@ class _BodyState extends State<Body> {
             'Spécialistes',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-           SizedBox(height: 10,),
+          SizedBox(height: 10),
           Specialiste(),
         ],
       ),

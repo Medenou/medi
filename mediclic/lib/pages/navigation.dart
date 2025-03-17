@@ -1,6 +1,7 @@
 // pages/navigation.dart
 import 'package:flutter/material.dart';
 import 'package:mediclic/otherpages/chatbot.dart';
+import 'package:mediclic/otherpages/rendez_page.dart';
 import 'package:mediclic/pages/dossier_medical.dart';
 import 'package:mediclic/pages/home.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +17,7 @@ class MyAppHome extends StatefulWidget {
 }
 
 class _MyAppHomeState extends State<MyAppHome> {
-  final List<Widget> pages = [Home(), DossierMedical(),Scaffold(), Profil()];
+  final List<Widget> pages = [Home(), DossierMedical(),RendezPage(), Profil()];
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
