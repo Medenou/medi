@@ -7,15 +7,15 @@ import 'package:mediclic/otherpages/rendez_vous.dart';
 import 'package:mediclic/otherpages/specialiste.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-  void appeler(String numero) async {
-    final Uri uri = Uri.parse('tel:$numero');
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      throw "Impossible de lancer cet appel";
-    }
+void appeler(String numero) async {
+  final Uri uri = Uri.parse('tel:$numero');
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw "Impossible de lancer cet appel";
   }
+}
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -98,8 +98,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-
-
   int selectedIndex = 0;
   List<String> specialites = [
     "Médecin Généraliste",
@@ -286,7 +284,8 @@ class _BodyState extends State<Body> {
               GestureDetector(
                 onTap: () {
                   showModalBottomSheet(
-                    elevation: 20,
+                    useSafeArea: true,
+
                     context: context,
                     builder: (context) {
                       return RendezVous();

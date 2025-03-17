@@ -41,7 +41,7 @@ class _CliniqueState extends State {
           return const Text("Loading");
         }
         return SizedBox(
-          height: hauteur * 0.3,
+          height: hauteur * 0.27,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: snapshot.data!.docs.length,
@@ -70,6 +70,7 @@ class _CliniqueState extends State {
                   width: largeur * 0.4,
                   height: hauteur * 0.3,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         height: hauteur * 0.2,

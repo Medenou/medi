@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mediclic/otherpages/rendez_vous2.dart';
 
 class DetailsClinique extends StatelessWidget {
- final Stream <String> cliniqueName;
+ final String cliniqueName;
  final String cliniquePhone;
  final  String cliniquephoto;
 
@@ -50,7 +50,7 @@ class DetailsClinique extends StatelessWidget {
 
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
@@ -65,7 +65,7 @@ class DetailsClinique extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      padding: EdgeInsets.only(top: 5, bottom: 5, left: 15),
                       width: largeurEcran * 0.5,
                       height: largeurEcran * 0.45,
                       child: Column(
@@ -73,7 +73,7 @@ class DetailsClinique extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '$cliniqueName',
+                            cliniqueName,
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               fontSize: 16,
@@ -113,13 +113,13 @@ class DetailsClinique extends StatelessWidget {
                           ),
 
                           Row(
-                            spacing: 5,
+                          //  spacing: 5,
                             children: [
-                              Icon(Icons.location_on, size: 26),
+                              Icon(Icons.location_on, size: 24),
                               Text(
                                 'SOS Abomey-Calavi',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: const Color.fromARGB(255, 11, 2, 2),
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                 ),
@@ -159,11 +159,11 @@ class DetailsClinique extends StatelessWidget {
                           spacing: 5,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.home, size: 30, color: Colors.white),
+                            Icon(Icons.home, size: 26, color: Colors.white),
                             Text(
                               'Visites',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -199,13 +199,13 @@ class DetailsClinique extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.badge_sharp,
-                              size: 30,
+                              size: 26,
                               color: Colors.white,
                             ),
                             Text(
                               'Expériences',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -295,7 +295,7 @@ class DetailsClinique extends StatelessWidget {
                     Text(
                       'Appeler',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 12,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -322,7 +322,7 @@ class DetailsClinique extends StatelessWidget {
                       'Message',
                       textAlign: TextAlign.justify,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 12,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -338,7 +338,7 @@ class DetailsClinique extends StatelessWidget {
                     context: context,
                     builder: (context) {
                       return RendezVousClinique(
-                        nomClinique: 'Divine Miséricorde',
+                        nomClinique:cliniqueName ,
                       );
                     },
                   );
@@ -358,7 +358,7 @@ class DetailsClinique extends StatelessWidget {
                     children: [
                       Icon(Icons.access_alarm, color: Colors.white),
                       Text(
-                        'Un rendez-vous',
+                        'Rendez-vous',
                         style: TextStyle(
                           fontSize: 12,
                           fontStyle: FontStyle.italic,
