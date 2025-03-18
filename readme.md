@@ -1,14 +1,18 @@
-# mediclic && mediclinique
+
 
 ## Mediclic
+
+## Author
+### Moise
+### Oswald
+
 ## Description
 -Mediclic est une application de type médicale pour des patients.
 -Elle répond à un besoin urgent du marché et constitue un atout pour tous individus.
 
 -Framework utilisés: Flutter
 -Langage: Dart
--version : Version001
--Données: Firebase, Données chiffrés de bout en bout
+-Outils de gestion de données : Firebase, 
 
 ## Fonctionnalités:
 - La géolocalisation optimisée: Cette fonctionnalité permet à  tout utilisateur de Medi-clic d'avoir un accès sur tous les centres  disponibles dans sa localité,
@@ -19,5 +23,25 @@
 
 ## Utilisation
 
-AVec un design simpliste, élégant et dynamique et de surcroit fluide, Mediclic se positionne comme une application à utilisation intutive. Pas besoi  d'un guide et d'un traducteur pour cerner le foncionnement de mediclic.
-En effet Mediclic presente quatres menu au niveau de la barre de navigation: accueil, consultation,dossier médiacal et enfin la page de profil.
+Avec un design simpliste, élégant et dynamique et de surcroit fluide, Mediclic se positionne comme une application à utilisation intutive. Pas besoi  d'un guide et d'un traducteur pour cerner le foncionnement de mediclic.
+
+1.cloner le repo
+***
+    bash
+git clone git@github.com:medenou/medi.git
+***
+
+
+2.Installer les dépendances
+***
+    bash
+flutter pub get
+***
+
+
+3.Lancer le projet
+***
+    bash
+flutter run
+***  
+
