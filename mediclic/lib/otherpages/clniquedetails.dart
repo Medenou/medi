@@ -2,11 +2,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mediclic/otherpages/rendez_vous2.dart';
+import 'package:mediclic/pages/home.dart';
 
 class DetailsClinique extends StatelessWidget {
- final String cliniqueName;
- final String cliniquePhone;
- final  String cliniquephoto;
+  final String cliniqueName;
+  final String cliniquePhone;
+  final String cliniquephoto;
 
   DetailsClinique({
     super.key,
@@ -113,7 +114,7 @@ class DetailsClinique extends StatelessWidget {
                           ),
 
                           Row(
-                          //  spacing: 5,
+                            //  spacing: 5,
                             children: [
                               Icon(Icons.location_on, size: 24),
                               Text(
@@ -269,8 +270,8 @@ class DetailsClinique extends StatelessWidget {
         elevation: 30,
         child: Container(
           padding: EdgeInsets.all(5),
-          width: largeurEcran - 70,
-          height: 75,
+          //  width: largeurEcran - 70,
+          //  height: 75,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(),
@@ -278,57 +279,67 @@ class DetailsClinique extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                height: 65,
-                width: (largeurEcran - 70) / 3 + 5,
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.green,
-                ),
-                child: Row(
-                  spacing: 5,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.call, color: Colors.white),
-                    Text(
-                      'Appeler',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  appeler(cliniquePhone);
+                },
+                child: Container(
+                  height: 65,
+                  width: (largeurEcran - 70) / 3 + 5,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Colors.green,
+                  ),
+                  child: Row(
+                    spacing: 5,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.call, color: Colors.white),
+                      Text(
+                        'Appeler',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                height: 65,
-                width: (largeurEcran - 70) / 3 + 5,
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.green,
-                ),
-                child: Row(
-                  spacing: 5,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.message, color: Colors.white),
-                    Text(
-                      'Message',
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  envoyerMail("mkoudanko@gmail.com");
+                },
+                child: Container(
+                  height: 65,
+                  width: (largeurEcran - 70) / 3 + 5,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Colors.green,
+                  ),
+                  child: Row(
+                    spacing: 5,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.message, color: Colors.white),
+                      Text(
+                        'Message',
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               GestureDetector(
@@ -337,9 +348,7 @@ class DetailsClinique extends StatelessWidget {
                     elevation: 20,
                     context: context,
                     builder: (context) {
-                      return RendezVousClinique(
-                        nomClinique:cliniqueName ,
-                      );
+                      return RendezVousClinique(nomClinique: cliniqueName);
                     },
                   );
                 },

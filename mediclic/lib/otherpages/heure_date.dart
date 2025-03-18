@@ -18,9 +18,7 @@ class BasicDateField extends StatelessWidget {
       children: <Widget>[
         Text('Choississez le jour (${format.pattern})'),
         DateTimeField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder()
-          ),
+          decoration: InputDecoration(border: OutlineInputBorder()),
           format: format,
           onShowPicker: (context, currentValue) {
             return showDatePicker(
@@ -47,8 +45,10 @@ class BasicTimeField extends StatelessWidget {
       children: <Widget>[
         Text('Choissisez votre heure de rendez-vous (${format.pattern})'),
         DateTimeField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder()),
+         /* validator: (value) {
+            if(value==null||value.isAfter())
+          },*/
+          decoration: InputDecoration(border: OutlineInputBorder()),
           format: format,
           onShowPicker: (context, currentValue) async {
             final time = await showTimePicker(
@@ -66,7 +66,6 @@ class BasicTimeField extends StatelessWidget {
 }
 
 Future<void> priseRendezVous(
-  String patientId,
   String cliniqueNom,
   String date,
   String heure,

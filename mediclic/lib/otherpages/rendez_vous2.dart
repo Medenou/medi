@@ -1,10 +1,16 @@
 // otherpages/rendez_vous2.dart
+import 'package:datetime_picker_formfield_new/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mediclic/otherpages/heure_date.dart';
 
 class RendezVousClinique extends StatelessWidget {
+  final TextEditingController date = TextEditingController();
+  final TextEditingController time = TextEditingController();
+  final formatTime = DateFormat("HH:mm");
+  final formatDate = DateFormat("yyyy-MM-dd");
   final String nomClinique;
-  const RendezVousClinique({super.key, required this.nomClinique});
+  RendezVousClinique({super.key, required this.nomClinique});
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +46,53 @@ class RendezVousClinique extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          BasicDateField(),
+          Text('Choississez le jour (${formatDate.pattern})'),
+          DateTimeField(
+             validator: (value) {
+              if (value == null) {
+                return "Entrez un jour valide";
+              }
+              return null;
+            },
+            controller: date,
+            decoration: InputDecoration(border: OutlineInputBorder()),
+            format: formatDate,
+            onShowPicker: (context, currentValue) {
+              return showDatePicker(
+                context: context,
+                firstDate: DateTime.now(),
+                initialDate: currentValue ?? DateTime.now(),
+                lastDate: DateTime(2026),
+              );
+            },
+          ),
           SizedBox(height: 10),
-          BasicTimeField(),
+          Text('Choissisez votre heure de rendez-vous (${formatTime.pattern})'),
+          DateTimeField(
+             validator: (value) {
+              if (value == null) {
+                return "Entrez une heure valide";
+              }
+              return null;
+            },
+            controller: time,
+            decoration: InputDecoration(border: OutlineInputBorder()),
+            format: formatTime,
+            onShowPicker: (context, currentValue) async {
+              final time = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.fromDateTime(
+                  currentValue ?? DateTime.now(),
+                ),
+              );
+              return DateTimeField.convert(time);
+            },
+          ),
+
           SizedBox(height: 15),
           GestureDetector(
             onTap: () {
+              priseRendezVous(nomClinique, date.text, time.text);
               Navigator.pop(context);
             },
             child: Center(

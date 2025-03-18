@@ -16,6 +16,12 @@ void appeler(String numero) async {
   }
 }
 
+void envoyerMail(String mail) async {
+  final Uri emailLaunchUri = Uri(scheme: 'mailto', path: mail);
+
+  await launchUrl(emailLaunchUri);
+}
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
