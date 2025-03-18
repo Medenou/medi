@@ -100,7 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Center(
                   child: Image.asset(
                     'assets/logo.png',
-                    height: MediaQuery.of(context).size.height * 0.12,
+                    height: MediaQuery.of(context).size.height * 0.13,
                   ),
                 ),
 
@@ -119,20 +119,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 SizedBox(height: 20),
                 _buildTextField(_nameController, 'Nom', Icons.person),
-                SizedBox(height: 15),
+                SizedBox(height: 20),
                 _buildTextField(
                   _surnameController,
                   'Prénom',
                   Icons.person_outline,
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 20),
                 _buildTextField(
                   _phoneController,
                   'Téléphone',
                   Icons.phone,
                   TextInputType.phone,
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 20),
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,

@@ -22,7 +22,7 @@ class _CliniqueState extends State {
   final Stream<QuerySnapshot> _cliniqueStream =
       FirebaseFirestore.instance
           .collection('users')
-          .where("profile", isEqualTo: "Clinique")
+          .where("profile", isEqualTo: "clinique")
           .snapshots();
 
   @override
