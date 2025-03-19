@@ -31,7 +31,7 @@ Design leger et simpliste
 1.cloner le repo
 ***
     bash
-      git clone git@github.com:medenou/medi.git
+      git clone https://github.com/Medenou/medi.git
 ***
 
 
