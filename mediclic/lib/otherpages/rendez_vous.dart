@@ -21,12 +21,8 @@ class _RendezVousState extends State<RendezVous> {
   final formatTime = DateFormat("HH:mm");
   final formatDate = DateFormat("yyyy-MM-dd");
 
-
   @override
   Widget build(BuildContext context) {
-    cliniqueNoms();
-    
-
     return Padding(
       padding: EdgeInsets.all(15),
       child: Column(
@@ -48,11 +44,11 @@ class _RendezVousState extends State<RendezVous> {
           DropDownTextField(
             controller: hopitalNom,
 
-            dropDownList:[
+            dropDownList: [
               DropDownValueModel(name: 'msn', value: 'msn'),
-               DropDownValueModel(name: 'Miséricorde', value: 'Miséricorde'),
-                DropDownValueModel(name: 'Saint Jean', value: 'Saint Jean'),
-              ],
+              DropDownValueModel(name: 'Miséricorde', value: 'Miséricorde'),
+              DropDownValueModel(name: 'Saint Jean', value: 'Saint Jean'),
+            ],
             textFieldDecoration: InputDecoration(
               suffixIcon: Icon(Icons.search),
               hintText: 'Choississez votre  clinique',
@@ -117,7 +113,7 @@ class _RendezVousState extends State<RendezVous> {
           GestureDetector(
             onTap: () {
               priseRendezVous(
-                hopitalNom.dropDownValue.toString(),
+                hopitalNom.dropDownValue!.value.toString(),
                 date.text,
                 time.text,
               );
