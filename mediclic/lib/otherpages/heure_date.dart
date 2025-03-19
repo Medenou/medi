@@ -45,7 +45,7 @@ class BasicTimeField extends StatelessWidget {
       children: <Widget>[
         Text('Choissisez votre heure de rendez-vous (${format.pattern})'),
         DateTimeField(
-         /* validator: (value) {
+          /* validator: (value) {
             if(value==null||value.isAfter())
           },*/
           decoration: InputDecoration(border: OutlineInputBorder()),
@@ -78,3 +78,13 @@ Future<void> priseRendezVous(
     "statut": "pending",
   });
 }
+List<String> cliniqueNoms()  {
+  final QuerySnapshot snapshot =  FirebaseFirestore.instance
+      .collection('users')
+      .where("profile", isEqualTo: "clinique")
+      .get() as QuerySnapshot<Object?>;
+
+  List<String> cliniques = snapshot.docs.map((doc) => doc['nom'].toString()).toList();
+  return cliniques;
+}
+
