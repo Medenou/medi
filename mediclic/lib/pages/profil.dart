@@ -14,8 +14,8 @@ class Profil extends StatefulWidget {
 }
 
 class _Profil extends State<Profil> {
-    String nomUser='Kdk';
-    String prenomUser='Moses';
+  String nomUser = 'Kdk';
+  String prenomUser = 'Moses';
   void getUserInfo() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
@@ -162,8 +162,8 @@ class _Profil extends State<Profil> {
               ],
             ),
             GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -36,9 +36,9 @@ class _SpecialisteState extends State {
             scrollDirection: Axis.horizontal,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
-               DocumentSnapshot document = snapshot.data!.docs[index];
-                        Map<String, dynamic> data =
-                            document.data()! as Map<String, dynamic>;
+              DocumentSnapshot document = snapshot.data!.docs[index];
+              Map<String, dynamic> data =
+                  document.data()! as Map<String, dynamic>;
               return GestureDetector(
                 child: Container(
                   padding: EdgeInsets.only(left: 5, right: 5),
@@ -53,11 +53,13 @@ class _SpecialisteState extends State {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image:
-                                index % 3 == 0
-                                    ? AssetImage('assets/image1.png')
-                                    : index % 3 == 1
-                                    ? AssetImage('assets/image2.png')
-                                    : AssetImage('assets/image3.png'),
+                                index % 4 == 0
+                                    ? AssetImage('assets/image4.png')
+                                    : index % 4 == 1
+                                    ? AssetImage('assets/image5.png')
+                                    : index % 4 == 3
+                                    ? AssetImage('assets/image6.png')
+                                    : AssetImage('assets/image7.png'),
                             fit: BoxFit.cover,
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(8)),
