@@ -3,6 +3,7 @@ import 'package:datetime_picker_formfield_new/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mediclic/otherpages/heure_date.dart';
+import 'package:dropdown_textfield/dropdown_textfield.dart';
 
 class RendezVous extends StatefulWidget {
   const RendezVous({super.key});
@@ -16,11 +17,16 @@ class RendezVous extends StatefulWidget {
 class _RendezVousState extends State<RendezVous> {
   TextEditingController date = TextEditingController();
   TextEditingController time = TextEditingController();
-  TextEditingController hopitalNom = TextEditingController();
+  SingleValueDropDownController hopitalNom = SingleValueDropDownController();
   final formatTime = DateFormat("HH:mm");
   final formatDate = DateFormat("yyyy-MM-dd");
+
+
   @override
   Widget build(BuildContext context) {
+    cliniqueNoms();
+    
+
     return Padding(
       padding: EdgeInsets.all(15),
       child: Column(
@@ -39,9 +45,15 @@ class _RendezVousState extends State<RendezVous> {
           ),
           SizedBox(height: 20),
 
-          TextFormField(
+          DropDownTextField(
             controller: hopitalNom,
-            decoration: InputDecoration(
+
+            dropDownList:[
+              DropDownValueModel(name: 'msn', value: 'msn'),
+               DropDownValueModel(name: 'Miséricorde', value: 'Miséricorde'),
+                DropDownValueModel(name: 'Saint Jean', value: 'Saint Jean'),
+              ],
+            textFieldDecoration: InputDecoration(
               suffixIcon: Icon(Icons.search),
               hintText: 'Choississez votre  clinique',
               border: OutlineInputBorder(
@@ -49,12 +61,13 @@ class _RendezVousState extends State<RendezVous> {
               ),
             ),
             validator: (value) {
-              value = value?.trim();
-              if (value == null || value.isEmpty) {
-                return "Entrez une clinique valide";
+              if (value == null) {
+                return "Required field";
+              } else {
+                return null;
               }
-              return null;
             },
+            onChanged: (val) {},
           ),
           SizedBox(height: 10),
           Text('Choississez le jour (${formatDate.pattern})'),
@@ -103,7 +116,11 @@ class _RendezVousState extends State<RendezVous> {
           SizedBox(height: 15),
           GestureDetector(
             onTap: () {
-              priseRendezVous(hopitalNom.text, date.text, time.text);
+              priseRendezVous(
+                hopitalNom.dropDownValue.toString(),
+                date.text,
+                time.text,
+              );
               Navigator.pop(context);
             },
             child: Center(

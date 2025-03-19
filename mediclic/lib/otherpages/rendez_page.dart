@@ -74,8 +74,8 @@ class _RendezPageState extends State<RendezPage> {
                               ),
                               trailing: Column(
                                 children: [
+                                  Text('Clinique'),
                                   Text('${data['doctor']}'),
-                                  Text('${data['status']}'),
                                 ],
                               ),
 

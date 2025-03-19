@@ -90,7 +90,7 @@ class _CliniqueState extends State {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        'Clinique ${data['name']}',
+                        ' ${data['name']}',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

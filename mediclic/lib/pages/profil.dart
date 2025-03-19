@@ -14,8 +14,8 @@ class Profil extends StatefulWidget {
 }
 
 class _Profil extends State<Profil> {
-  late final String nomUser;
-  late final String prenomUser;
+    String nomUser='Kdk';
+    String prenomUser='Moses';
   void getUserInfo() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
