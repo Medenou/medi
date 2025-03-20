@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mediclic/pages/connexionpages/login_screen.dart';
 
 class Profil extends StatefulWidget {
   const Profil({super.key});
@@ -164,6 +165,13 @@ class _Profil extends State<Profil> {
             GestureDetector(
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ),
+                );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
